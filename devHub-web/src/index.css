@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+.card {
+    width: 300px;
+    height: 400px;
+    /* background-color: #ff3e6c; */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+  }
+  
+  
