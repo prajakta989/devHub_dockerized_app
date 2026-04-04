@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./devHub-web
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./DevHub
+    ports:
+      - "5000:3000"
+    env_file:
+      - ./DevHub/.env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

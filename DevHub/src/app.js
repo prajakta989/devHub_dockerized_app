@@ -9,7 +9,7 @@ const initializeSocket = require('./utils/socket')
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5173", // No trailing slash!
+    origin: "http://localhost:3000", // No trailing slash!
     credentials: true,
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
   })
@@ -33,7 +33,7 @@ const server = http.createServer(app);
 initializeSocket(server);
 
 
-server.listen(3000, () => {
+server.listen(process.env.PORT, "0.0.0.0",  () => {
   console.log("Server is running on port 3000");
 });
 
