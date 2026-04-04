@@ -38,18 +38,17 @@ pipeline{
             environment {
                 scannerHome = tool 'SONAR'
             }
-            dir('devHub-web'){
-                steps {
-                 withSonarQubeEnv('sonarserver') {
-                    sh 'echo $scannerHome'
-                    sh '''
-                    ${scannerHome}/bin/sonar-scanner \
-                    -Dsonar.projectKey=devhub-web \
-                    -Dsonar.sources=.'''
+            steps {
+                dir('devHub-web') {
+                    withSonarQubeEnv('sonarserver') {
+                        sh '''
+                        ${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.projectKey=devhub-web \
+                        -Dsonar.sources=.
+                        '''
                     }
                 }
             }
-            
         }
 
         // BACKEND STAGES
