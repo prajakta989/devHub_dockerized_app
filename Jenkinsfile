@@ -5,7 +5,7 @@ pipeline{
         nodejs "NODEJS20"
     }
 
-    enviroment {
+    environment {
         DOCKER_HUB = "prajakta989"
         FRONTEND_IMAGE = "${DOCKER_HUB}/devhubweb"
         BACKEND_IMAGE = "${DOCKER_HUB}/devhub"
