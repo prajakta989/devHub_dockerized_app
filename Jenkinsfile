@@ -69,15 +69,27 @@ pipeline{
             }
         }
 
-        stage('Backend - Test') {
+        stage('Testing') {
             steps {
-                dir('DevHub') {
+                dir('backend') {
                     sh '''
-                      if npm start | grep -q test; then 
+                    if grep -q '"test"' package.json; then
                         npm test
-                      else
-                        echo "No tests found skipping..."
-                      fi
+                    else
+                        echo "No tests found, skipping..."
+                    fi
+                    '''
+                }
+            }
+        }
+
+        stage('SonarQube Analysis'){
+            steps{
+                withSonarQubeEnv('sonarserver'){
+                    sh '''
+                        npx sonar-scanner \
+                        -Dsonar.projectKey=devshub-backend \
+                        -Dsonar.sources=. \
                     '''
                 }
             }
