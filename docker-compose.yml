@@ -12,8 +12,9 @@ services:
     image: prajakta989/devhub:latest
     ports:
       - "5000:3000"
-    env_file:
-      - ./DevHub/.env
+    environment:
+    - MONGODB_CONNECTION_STRING=${MONGODB_CONNECTION_STRING}
+    - JWT_SECRET=${JWT_SECRET}
     depends_on:
       - mongo
     networks:

@@ -125,10 +125,19 @@ pipeline{
         // ================= DEPLOY =================
         stage('Deploy Containers') {
             steps {
-                sh '''
-                docker-compose down
-                docker-compose up -d
-                '''
+                withCredentials([
+                    string(credentialsId: 'MONGODB_CONNECTION_STRING', variable: 'MONGODB_CONNECTION_STRING'),
+                    string(credentialsId: 'JWT_SECRET', variable: 'JWT_SECRET')
+                ]) {
+                    sh '''
+                    docker compose down || true
+
+                    export MONGODB_CONNECTION_STRING=$MONGODB_CONNECTION_STRING
+                    export JWT_SECRET=$JWT_SECRET
+
+                    docker compose up -d
+                    '''
+                }
             }
         }
 

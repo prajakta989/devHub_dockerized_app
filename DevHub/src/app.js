@@ -33,7 +33,7 @@ const server = http.createServer(app);
 initializeSocket(server);
 
 
-server.listen(process.env.PORT, "0.0.0.0",  () => {
+server.listen(3000, "0.0.0.0",  () => {
   console.log("Server is running on port 3000");
 });
 
