@@ -98,8 +98,8 @@ pipeline{
         //DOCKER STAGES
         stage('Docker Build Images'){
             steps {
-                sh 'docker build -t $FRONTEND_IMAGE:latest ./devHub-web'
-                sh 'docker build -t $BACKEND_IMAGE:latest ./DevHub'
+                sh 'docker build -t $FRONTEND_IMAGE:$BUILD_NUMBER ./devHub-web'
+                sh 'docker build -t $BACKEND_IMAGE:$BUILD_NUMBER ./DevHub'
             }
         }
 
@@ -117,8 +117,19 @@ pipeline{
 
         stage('Push Images') {
             steps {
-                sh 'docker push $FRONTEND_IMAGE:latest'
-                sh 'docker push $BACKEND_IMAGE:latest'
+                sh '''
+                # Tag as latest
+                docker tag $FRONTEND_IMAGE:$BUILD_NUMBER $FRONTEND_IMAGE:latest
+                docker tag $BACKEND_IMAGE:$BUILD_NUMBER $BACKEND_IMAGE:latest
+
+                # Tag as latest
+                docker push $FRONTEND_IMAGE:$BUILD_NUMBER
+                docker push $BACKEND_IMAGE:$BUILD_NUMBER
+
+                # Push latest images
+                docker push $FRONTEND_IMAGE:latest
+                docker push $BACKEND_IMAGE:$BUILD_NUMBER
+                '''
             }
         }
 
@@ -130,6 +141,7 @@ pipeline{
                     string(credentialsId: 'JWT_SECRET', variable: 'JWT_SECRET')
                 ]) {
                     sh '''
+                    export TAG=$BUILD_NUMBER
                     docker compose down || true
 
                     export MONGODB_CONNECTION_STRING=$MONGODB_CONNECTION_STRING
@@ -138,6 +150,16 @@ pipeline{
                     docker compose up -d
                     '''
                 }
+            }
+        }
+
+        //Health check
+        stage('Health Check') {
+            steps {
+                sh '''
+                sleep 10
+                curl -f http://localhost:3000 || exit 1
+                '''
             }
         }
 

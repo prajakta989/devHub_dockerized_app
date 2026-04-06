@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: prajakta989/devhubweb:latest
+    image: prajakta989/devhubweb:${TAG}
     ports:
       - "3000:80"
     depends_on:
@@ -9,7 +9,7 @@ services:
       - devops-net
 
   backend:
-    image: prajakta989/devhub:latest
+    image: prajakta989/devhub:${TAG}
     ports:
       - "5000:3000"
     environment:
