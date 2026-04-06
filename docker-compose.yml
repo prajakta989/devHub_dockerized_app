@@ -1,34 +1,36 @@
-version: "3.8"
-
 services:
   frontend:
     image: prajakta989/devhubweb:latest
-    networks:
-      - devops-net
     ports:
       - "3000:80"
     depends_on:
       - backend
+    networks:
+      - devops-net
 
   backend:
     image: prajakta989/devhub:latest
-    networks:
-      - devops-net
     ports:
       - "5000:3000"
     env_file:
       - ./DevHub/.env
     depends_on:
       - mongo
+    networks:
+      - devops-net
 
   mongo:
     image: mongo
-    networks:
-      - devops-net
+
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - devops-net
 
 volumes:
   mongo-data:
+
+networks:
+  devops-net:
