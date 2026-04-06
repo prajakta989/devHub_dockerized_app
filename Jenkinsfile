@@ -126,14 +126,8 @@ pipeline{
         stage('Deploy Containers') {
             steps {
                 sh '''
-                docker stop frontend || true
-                docker stop backend || true
-
-                docker rm frontend || true
-                docker rm backend || true
-
-                docker run -d -p 3000:80 --name frontend $FRONTEND_IMAGE:latest
-                docker run -d -p 5000:3000 --name backend $BACKEND_IMAGE:latest
+                docker-compose down
+                docker-compose up -d
                 '''
             }
         }
