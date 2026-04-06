@@ -132,8 +132,8 @@ pipeline{
                 docker rm frontend || true
                 docker rm backend || true
 
-                docker run -d -p 3000:3000 --name frontend $FRONTEND_IMAGE:latest
-                docker run -d -p 5000:5000 --name backend $BACKEND_IMAGE:latest
+                docker run -d -p 3000:80 --name frontend $FRONTEND_IMAGE:latest
+                docker run -d -p 5000:3000 --name backend $BACKEND_IMAGE:latest
                 '''
             }
         }
