@@ -158,7 +158,7 @@ pipeline{
             steps {
                 sh '''
                 sleep 10
-                curl -f http://backend:3000/feed || exit 1
+                curl -f http://backend:5000/feed || exit 1
                 '''
             }
         }
