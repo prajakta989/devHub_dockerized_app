@@ -71,14 +71,8 @@ pipeline{
 
         stage('Testing') {
             steps {
-                dir('backend') {
-                    sh '''
-                    if grep -q '"test"' package.json; then
-                        npm test
-                    else
-                        echo "No tests found, skipping..."
-                    fi
-                    '''
+                dir('DevHub') {
+                    sh 'npm test'
                 }
             }
         }
