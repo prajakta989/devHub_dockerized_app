@@ -134,24 +134,24 @@ pipeline{
         }
 
         // ================= DEPLOY =================
-        stage('Deploy Containers') {
-            steps {
-                withCredentials([
-                    string(credentialsId: 'MONGODB_CONNECTION_STRING', variable: 'MONGODB_CONNECTION_STRING'),
-                    string(credentialsId: 'JWT_SECRET', variable: 'JWT_SECRET')
-                ]) {
-                    sh '''
-                    export TAG=$BUILD_NUMBER
-                    docker compose down || true
+        // stage('Deploy Containers') {
+        //     steps {
+        //         withCredentials([
+        //             string(credentialsId: 'MONGODB_CONNECTION_STRING', variable: 'MONGODB_CONNECTION_STRING'),
+        //             string(credentialsId: 'JWT_SECRET', variable: 'JWT_SECRET')
+        //         ]) {
+        //             sh '''
+        //             export TAG=$BUILD_NUMBER
+        //             docker compose down || true
 
-                    export MONGODB_CONNECTION_STRING=$MONGODB_CONNECTION_STRING
-                    export JWT_SECRET=$JWT_SECRET
+        //             export MONGODB_CONNECTION_STRING=$MONGODB_CONNECTION_STRING
+        //             export JWT_SECRET=$JWT_SECRET
 
-                    docker compose up -d
-                    '''
-                }
-            }
-        }
+        //             docker compose up -d
+        //             '''
+        //         }
+        //     }
+        // }
 
         //Health check
         stage('Health Check') {
