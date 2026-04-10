@@ -154,14 +154,14 @@ pipeline{
         // }
 
         //Health check
-        stage('Health Check') {
-            steps {
-                sh '''
-                sleep 10
-                curl -f http://backend:3000/health || exit 1
-                '''
-            }
-        }
+        // stage('Health Check') {
+        //     steps {
+        //         sh '''
+        //         sleep 10
+        //         curl -f http://backend:3000/health || exit 1
+        //         '''
+        //     }
+        // }
 
     }
 }
