@@ -72,7 +72,14 @@ pipeline{
         stage('Testing') {
             steps {
                 dir('DevHub') {
-                    sh 'npm test'
+                    withCredentials([
+                    string(credentialsId: 'MONGODB_CONNECTION_STRING', variable: 'MONGODB_CONNECTION_STRING')
+                    ]) {
+                        sh '''
+                        export MONGODB_CONNECTION_STRING=$MONGODB_CONNECTION_STRING
+                        npm test
+                        '''
+                    }
                 }
             }
         }
