@@ -36,6 +36,8 @@ app.use("/", chatRouter);
 const server = http.createServer(app);
 initializeSocket(server);
 
+
+
 if (process.env.NODE_ENV !== "test") {
   connectDB()
     .then(() => {
