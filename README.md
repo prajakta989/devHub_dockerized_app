@@ -36,3 +36,7 @@ DevHub is a full-stack MERN application deployed using a production-style DevOps
 - Docker image build and push to Docker Hub
 - Environment variable management using .env
 - Health check endpoint for backend monitoring
+
+## Architecture
+<img width="443" height="172" alt="architecture" src="https://github.com/user-attachments/assets/acf781f4-0687-45c8-97e7-3ddd6c5db517" />
+
