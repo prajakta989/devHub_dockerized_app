@@ -1,17 +1,5 @@
-# devHub_dockerized_app
+# devHub - Production-Ready MERN Application
 
-## 🚀 Run the app
+Overview
 
-docker-compose up --build
-
-## 🌐 Access
-
-Frontend: http://localhost:3000  
-Backend: http://localhost:5000
-
-## 🧩 Tech Stack
-
-- React (Vite)
-- Node.js / Express
-- MongoDB
-- Docker & Docker Compose
+DevHub is a full-stack MERN application deployed using a production-style DevOps workflow. The project demonstrates how to containerize, automate, deploy, and serve a modern web application using Docker, jenkins, AWS EC2, and Nginx.
