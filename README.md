@@ -3,3 +3,36 @@
 ## Overview
 
 DevHub is a full-stack MERN application deployed using a production-style DevOps workflow. The project demonstrates how to containerize, automate, deploy, and serve a modern web application using Docker, jenkins, AWS EC2, and Nginx.
+
+## Tech Stack
+### Frontend
+- react
+- vite
+- tailwind CSS
+
+### backend
+- Node js
+- Express js
+- MongoDB
+- JWT Authentication
+
+### DevOps / Deployment
+- Docker
+- Docker Compose
+- jenkns CI
+- Docker Hub
+- AWS EC2
+- Nginx Reverse Proxy
+- Cloudflare + Custom Domain
+
+## Features
+- User authentication using JWT
+- Frontend and backend separated into independent services
+- Dockerized frontend, backend, and MongoDB
+- Reverse proxy setup using Nginx
+- API routing through /api
+- Custom domain support
+- CI pipeline using Jenkins
+- Docker image build and push to Docker Hub
+- Environment variable management using .env
+- Health check endpoint for backend monitoring
