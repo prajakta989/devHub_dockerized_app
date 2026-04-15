@@ -42,6 +42,6 @@ DevHub is a full-stack MERN application deployed using a production-style DevOps
 
 ### Docker setup
 ## build Images Locally
-`docker build -t $FRONTEND_IMAGE:$BUILD_NUMBER ./devHub-web`
-`docker build -t $BACKEND_IMAGE:$BUILD_NUMBER ./DevHub`
+```docker build -t $FRONTEND_IMAGE:$BUILD_NUMBER ./devHub-web```
+```docker build -t $BACKEND_IMAGE:$BUILD_NUMBER ./DevHub```
 
