@@ -66,9 +66,9 @@ jobs:
       - name: Deploy to EC2
         uses: aapleboy/ssh-action@v1
         with:
-          host: ${{ EC2_HOST }}
-          username: ${{ EC2_USER }}
-          key: ${{ EC2_SSH_KEY }}
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /path/to/your/app
             docker compose pull
