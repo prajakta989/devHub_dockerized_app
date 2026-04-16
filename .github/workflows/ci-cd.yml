@@ -58,8 +58,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/devhubbackend:${{ github.run_number }}
-            ${{ secrets.DOCKER_USERNAME }}/devhubbackend:latest
+            ${{ secrets.DOCKER_USERNAME }}/devhub:${{ github.run_number }}
+            ${{ secrets.DOCKER_USERNAME }}/devhub:latest
       
     
       #Deploy
@@ -70,7 +70,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /path/to/your/app
+            cd /home/ubuntu/deploy
             docker compose pull
             docker compose up -d
             docker image prune -f
