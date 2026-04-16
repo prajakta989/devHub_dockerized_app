@@ -7,12 +7,22 @@ const http = require("http");
 const initializeSocket = require("./utils/socket");
 
 const app = express();
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5173",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:3000", // No trailing slash!
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
-    methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
-  }),
+  })
 );
 app.use(express.json());
 app.use(cookieParser());

@@ -66,7 +66,7 @@ const userSchema = new Schema(
     },
     photoUrl: {
       type: String,
-      default: "https://www.pnrao.com/wp-content/uploads/2023/06/dummy-user-male.jpg",
+      default: "https://smsdelhibmw.co.in/wp-content/uploads/2022/02/User-Profile-PNG.png",
       validate:{
           validator: validator.isURL,
           message: 'Invalid URL format',
