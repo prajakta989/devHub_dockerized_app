@@ -1,5 +1,7 @@
 # devHub - Production-Ready MERN Application
 
+![CI/CD](https://github.com/prajakta989/devHub_dockerized_app/actions/workflows/ci-cd.yml/badge.svg)
+
 ## Overview
 
 DevHub is a full-stack MERN application deployed using a production-style DevOps workflow. The project demonstrates how to containerize, automate, deploy, and serve a modern web application using Docker, jenkins, AWS EC2, and Nginx.
